@@ -67,6 +67,7 @@ class Trainer:
             val_acc = self.eval(epoch)
 
             if best_val_acc < val_acc:
+                best_val_acc = val_acc
                 print(f"Saving best weights to "
                       f"{os.path.join(self.log_dir, 'weights')}... (EPOCH {epoch})")
                 torch.save(
