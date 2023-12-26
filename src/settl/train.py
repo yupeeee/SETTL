@@ -63,7 +63,7 @@ class Trainer:
                 scalar_value=self.optimizer.param_groups[0]['lr'],
                 global_step=epoch,
             )
-            self.scheduler.step(epoch)
+            self.scheduler.step()
             val_acc = self.eval(epoch)
 
             if best_val_acc < val_acc:
