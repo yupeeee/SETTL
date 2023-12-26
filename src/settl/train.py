@@ -57,6 +57,13 @@ class Trainer:
         best_val_acc = 0.
 
         for epoch in range(1, self.epochs + 1):
+            self.scheduler.step(epoch)
+            self.writer.add_scalar(
+                tag="LR",
+                scalar_value=self.optimizer.param_groups[0]['lr'],
+                global_step=epoch,
+            )
+
             self.train(epoch)
             val_acc = self.eval(epoch)
 
